@@ -8,17 +8,17 @@
    <body>
 		<header>
 			<span id="title">Movie cruiser</span>
-			<img src="./images/logo.png" alt="logo" id="logo"> 
+			<img src="./images/logo.png" alt="logo" id="logo">  
 		<nav>
-		<a class="nav" href="movie-list-admin.html">movies</a>
+		<a class="nav" href="ShowMovieListAdmin">movies</a>
 		</nav>
 		</header>
 		<div>
 			<h1>Edit movie status</h1>
-			<h3>Movie details saved sucessfully</h3>
+			<h3>${msg}</h3>
 		</div>
 		<footer>
-		copyright &copy 2019
+		copyright  @ copy 2019
 		</footer>
 	</body>
 </html>

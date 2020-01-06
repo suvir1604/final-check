@@ -48,14 +48,14 @@ public class FavoriteDaocollectionImplTest {
 
 	private static void testremoveFavorite() {
 		FavoriteDao favoriteDao = new FavoriteDaoCollectionImpl();
-		long totalGross = 0l;
+		long totalGross = 0l; 
 		try {
 			favoriteDao.removeFavorite(1, 2l);
 			List<MovieItem> movieItemListCustomer = favoriteDao.getAllFavorite(1);
 			System.out.println("User After Remove Favorite Movie");
 			for (MovieItem movieItem : movieItemListCustomer) {
 				System.out.println(movieItem);
-				totalGross += movieItem.getBoxoffice();
+				totalGross+= movieItem.getBoxoffice();
 			}
 		} catch (Exception e) {
 			e.getMessage();

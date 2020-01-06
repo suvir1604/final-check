@@ -37,7 +37,7 @@ public class MovieItemDaoCollectionImpl implements MovieItemDao {
 
 	@Override
 	public List<MovieItem> getMovieItemListCustomer() {
-		List<MovieItem> CustList = new ArrayList();
+		List<MovieItem> CustList = new ArrayList<MovieItem>();
 		Date today = new Date();
 		for (MovieItem x : MovieItemList) {
 			if ((x.getDateofLaunch().before(today))) {

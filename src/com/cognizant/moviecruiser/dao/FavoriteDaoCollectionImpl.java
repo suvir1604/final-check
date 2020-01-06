@@ -1,7 +1,6 @@
 package com.cognizant.moviecruiser.dao;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,7 +13,7 @@ public class FavoriteDaoCollectionImpl implements FavoriteDao {
 	public FavoriteDaoCollectionImpl() {
 		super();
 		if (userFavorite == null) {
-			userFavorite = new HashMap();
+			userFavorite = new HashMap<>();
 			userFavorite.put(1l, new Favorite());
 
 		}
@@ -62,13 +61,18 @@ public class FavoriteDaoCollectionImpl implements FavoriteDao {
 	}
 
 	@Override
-	public void removeFavorite(long userId, long movieItemId) {
+	public void removeFavorite(long userId, long movieItemId) throws FavoriteEmptyException {
 		List<MovieItem> movieItemList = userFavorite.get(userId).getMovieItemList();
+		Favorite favorite = userFavorite.get(userId);
+		if (((favorite == null)) || (movieItemList.isEmpty())) {
+			throw new FavoriteEmptyException();
+		}else {
 		for (MovieItem s : movieItemList) {
 			if (s.getId() == movieItemId) {
 				movieItemList.remove(s);
+				break;
 			}
-			break;
+		}
 
 		}
 
