@@ -15,7 +15,15 @@ values
 	(5, 'Avengers:end game', 278285677, 'Yes',
 					'2022-11-02', 'Super Hero', 'Yes');
                     
-select * from movie_item;
+select
+ m_id as "id",
+ m_Title as "Title",
+ m_Boxoffice as "Boxoffice",
+ m_Active as "Active",
+ m_dateofLaunch as "dateofLaunch",
+ m_Genre as "Genre",
+ m_HasTeaser as "HasTeaser" 
+ from movie_item; 
 
 ---- ---------------------------------------------------------------
 ---- Updating movieitem in the MovieItem Table
@@ -28,8 +36,15 @@ where m_id=1;
 ---- Display Admin List------------------------------------------
 ---- ---------------------------------------------------------------
 
-select * from movie_item;
-
+select
+ m_id as "id",
+ m_Title as "Title",
+ m_Boxoffice as "Boxoffice",
+ m_Active as "Active",
+ m_dateofLaunch as "dateofLaunch",
+ m_Genre as "Genre",
+ m_HasTeaser as "HasTeaser" 
+ from movie_item;
 
 ---- ---------------------------------------------------------------
 ---- Adding User Details into User Table------------------------------
@@ -41,16 +56,22 @@ VALUES
 ---- ---------------------------------------------------------------
 ---- Display User Details ------------------------------
 ---- ---------------------------------------------------------------
-SELECT * FROM user;
+SELECT us_id as "User Id",
+us_name as "User Name" 
+FROM user;
 
 
 ---- ---------------------------------------------------------------
 ---- Customer Movie List------------------------------
 ---- ---------------------------------------------------------------
 
-SELECT m_Title,m_HasTeaser,m_Boxoffice,m_Genre
+SELECT 
+m_Title as "Title",
+m_HasTeaser as "HasTeaser",
+m_Boxoffice as "Boxoffice",
+m_Genre as "Genre"
 FROM movie_item
-WHERE m_active='Yes' AND m_dateofLaunch< (SELECT(CURDATE()));
+WHERE m_active='Yes' AND m_dateofLaunch < CURDATE();
 
 ---- ---------------------------------------------------------------
 ---- Display Customer Movie List------------------------------
@@ -67,12 +88,19 @@ values
 ---- ---------------------------------------------------------------
 ---- Adding Favorites in the favorite table------------------------------
 ---- ---------------------------------------------------------------
-SELECT * FROM  favorite; 
+SELECT 
+fv_id as "Favorite Id",
+fv_us_id as "Favorite UserId",
+fv_pr_id as "Favorite Primary Id"
+FROM  favorite; 
 
 ---- ---------------------------------------------------------------
 ----  view favorite table------------------------------
 ---- ---------------------------------------------------------------
-SELECT m_Title,m_Boxoffice,m_Genre
+SELECT 
+m_Title as "Title",
+m_Boxoffice as "Boxoffice",
+m_Genre as "Genre"
 FROM movie_item
 inner join favorite
 on fv_pr_id=m_id
@@ -81,7 +109,7 @@ where fv_us_id=1;
 ---- ---------------------------------------------------------------
 ----  Display No of Favorite------------------------------
 ---- ---------------------------------------------------------------
-SELECT count(m_Boxoffice) as NoofFavorites
+SELECT count(m_Boxoffice) as "No of Favorites"
 FROM movie_item
 inner join favorite
 on fv_pr_id=m_id
@@ -101,5 +129,9 @@ and fv_pr_id=2;
 ----  Deletion in the favorite------------------------------
 ---- ---------------------------------------------------------------
 
-SELECT * FROM favorite;
+SELECT 
+fv_id as "Favorite Id",
+fv_us_id as "Favorite UserId",
+fv_pr_id as "Favorite Primary Id"
+FROM  favorite; 
 
