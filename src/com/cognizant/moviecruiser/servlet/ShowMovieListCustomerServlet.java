@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cognizant.moviecruiser.dao.MovieItemDao;
 import com.cognizant.moviecruiser.dao.MovieItemDaoCollectionImpl;
+import com.cognizant.moviecruiser.dao.MovieItemDaoSqlImpl;
 import com.cognizant.moviecruiser.model.MovieItem;
 
 /**
@@ -36,13 +37,13 @@ public class ShowMovieListCustomerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			MovieItemDao movieItemDao = new MovieItemDaoCollectionImpl();
+			MovieItemDao movieItemDao = new MovieItemDaoSqlImpl(); 
 			List<MovieItem> movieItemList = movieItemDao.getMovieItemListCustomer();
 			request.setAttribute("movieItemList", movieItemList);
 			RequestDispatcher rd = request.getRequestDispatcher("movie-list-customer.jsp"); 
 			rd.forward(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 	}
 
@@ -52,7 +53,7 @@ public class ShowMovieListCustomerServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		doGet(request, response);
 	}
 

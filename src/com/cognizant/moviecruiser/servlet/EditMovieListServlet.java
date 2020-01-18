@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cognizant.moviecruiser.dao.MovieItemDao;
 import com.cognizant.moviecruiser.dao.MovieItemDaoCollectionImpl;
+import com.cognizant.moviecruiser.dao.MovieItemDaoSqlImpl;
 import com.cognizant.moviecruiser.model.MovieItem;
 import com.cognizant.moviecruiser.util.DateUtil;
 
@@ -47,7 +48,7 @@ public class EditMovieListServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
-			long id = Long.parseLong(request.getParameter("movieItemId"));
+			long id = Long.parseLong(request.getParameter("movieItemId")); 
 			String title = request.getParameter("name");
 			long boxoffice = Long.parseLong(request.getParameter("Gross"));
 			boolean active = Boolean.parseBoolean(request.getParameter("rb"));
@@ -57,7 +58,7 @@ public class EditMovieListServlet extends HttpServlet {
 
 			MovieItem movie = new MovieItem(id, title, boxoffice, active, DateUtil.convertToDate(launch), genre,
 					hasTeaser);
-			MovieItemDao movieItemDao = new MovieItemDaoCollectionImpl();
+			MovieItemDao movieItemDao = new MovieItemDaoSqlImpl();
 			movieItemDao.modifyMovieItem(movie);
 			request.setAttribute("msg", "movie Items Modified succesfully");
 			RequestDispatcher rd = request.getRequestDispatcher("edit-movie-status.jsp");

@@ -7,7 +7,7 @@ import java.util.List;
 import com.cognizant.moviecruiser.model.MovieItem;
 import com.cognizant.moviecruiser.util.DateUtil;
 
-public class MovieItemDaoCollectionImplTest {
+public class MovieItemDaoSqlImplTest { 
 
 	public static void main(String[] args) throws ParseException, SQLException {
 		System.out.println("Admin List");
@@ -21,7 +21,7 @@ public class MovieItemDaoCollectionImplTest {
 	}
 
 	public static void testMovieItemListAdmin() throws ParseException, SQLException{
-		MovieItemDao movieItemDao = new MovieItemDaoCollectionImpl();
+		MovieItemDao movieItemDao = new MovieItemDaoSqlImpl();
 		List<MovieItem> movieItemList = movieItemDao.getMovieItemListAdmin();
 		for (MovieItem x : movieItemList) {
 			System.out.println(x);
@@ -29,7 +29,7 @@ public class MovieItemDaoCollectionImplTest {
 	}
 
 	public static void testMovieItemListCustomer() throws ParseException, SQLException {
-		MovieItemDao movieItemDao = new MovieItemDaoCollectionImpl(); 
+		MovieItemDao movieItemDao = new MovieItemDaoSqlImpl(); 
 		List<MovieItem> movieItemList = movieItemDao.getMovieItemListCustomer();
 		for (MovieItem x : movieItemList) {
 			System.out.println(x);
@@ -37,11 +37,12 @@ public class MovieItemDaoCollectionImplTest {
 	}
 
 	private static void testmodifyMovieItem() throws ParseException {
-		MovieItem m = new MovieItem(2, "AngryBirds", 1518812974, true, DateUtil.convertToDate("23/12/2017"), "comedy",
+		MovieItem m = new MovieItem(2, "HeartStrings", 1518812974, true, DateUtil.convertToDate("23/12/2017"), "Romance",
 				true);
-		MovieItemDao movieItemDao = new MovieItemDaoCollectionImpl();
+		MovieItemDao movieItemDao = new MovieItemDaoSqlImpl();
 		movieItemDao.modifyMovieItem(m);
-		MovieItem modifyMovieItem = movieItemDao.getMovieItem(m.getId());
+		MovieItem modifyMovieItem = movieItemDao.getMovieItem(m.getId()); 
 	}
 
 }
+
